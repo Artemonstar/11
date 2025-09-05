@@ -1,0 +1,52 @@
+
+public class MultiplyUsingSubtraction {
+    public static void main(String[] args) {
+        int num1 = 5;
+        int num2 = 8;
+
+        int product = multiply(num1, num2);
+        System.out.println("Произведение (" + num1 + " * " + num2 + ") равно: " + product);
+    }
+
+    private static int multiply(int x, int y) {
+        if(x == 0 || y == 0) {
+            return 0;
+        }
+
+        boolean isNegativeResult = false;
+
+        if((x < 0 && y > 0) || (x > 0 && y < 0)) {
+            isNegativeResult = true;
+        }
+
+        x = Math.abs(x);
+        y = Math.abs(y);
+
+        int count = 0;
+        while(y != 0) {
+            y -= 1;
+            count += x;
+        }
+
+
+        return isNegativeResult ? -count : count;
+    }
+}
+
+import java.lang.Math;
+
+public class PowerMultiplication {
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 8;
+
+        double resultDouble = powerMultiply(a, b);
+        int resultInt = (int)Math.round(resultDouble); // Округление результата до целого числа
+
+        System.out.println("Произведение (" + a + " * " + b + ") через возведение в степень примерно равно: " + resultInt);
+    }
+
+    private static double powerMultiply(double x, double y) {
+        return Math.pow(x, Math.log(y) / Math.log(2));
+    }
+}
